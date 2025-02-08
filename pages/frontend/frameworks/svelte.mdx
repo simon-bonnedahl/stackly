@@ -1,0 +1,64 @@
+---
+title: "Svelte"
+description: "A detailed guide to Svelte, a modern framework that compiles your components to highly optimized vanilla JavaScript."
+---
+
+# Svelte
+
+Svelte is a modern frontend framework that takes a unique approach to building user interfaces. Rather than using a virtual DOM, Svelte shifts much of the work to compile time, converting your components into efficient imperative code that updates the DOM directly.
+
+## Core Concepts
+
+### Compiler-Driven Framework
+
+- **Compilation:** Svelte compiles your components during build time, producing optimized JavaScript with minimal runtime overhead.
+- **No Virtual DOM:** Instead of diffing and patching a virtual DOM, Svelte updates the actual DOM directly, resulting in improved performance.
+
+### Reactive Declarations
+
+- **Reactivity:** In Svelte, reactivity is achieved with simple assignments. When a variable's value changes, the UI updates automatically.
+- **Reactive Statements:** Use the `$:` syntax to create reactive statements that re-run whenever their dependencies change.
+
+~~~svelte
+<script>
+  let count = 0;
+
+  // Reactive declaration: updates whenever `count` changes
+  $: doubled = count * 2;
+</script>
+
+<p>Count: {count}</p>
+<p>Doubled: {doubled}</p>
+<button on:click={() => count += 1}>Increment</button>
+~~~
+
+### Single-File Components
+
+- **Component Structure:** Svelte components are written in single `.svelte` files that encapsulate HTML, JavaScript, and CSS.
+- **Scoped Styles:** CSS defined within a Svelte component is scoped by default, reducing the risk of style conflicts across components.
+
+~~~svelte
+<style>
+  p {
+    color: blue;
+  }
+</style>
+
+<script>
+  export let name = "World";
+</script>
+
+<p>Hello, {name}!</p>
+~~~
+
+## Tooling and Ecosystem
+
+- **SvelteKit:** The official framework for building Svelte applications, offering features such as file-based routing, server-side rendering, and more.
+- **Developer Experience:** Svelte's simple syntax and powerful reactivity model make it accessible to both beginners and experienced developers.
+- **Community:** A growing ecosystem with an increasing number of plugins, integrations, and resources.
+
+## Additional Resources
+
+- [Svelte Official Website](https://svelte.dev)
+- [Svelte Tutorial](https://svelte.dev/tutorial)
+- [Svelte Documentation](https://svelte.dev/docs)

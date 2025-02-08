@@ -1,7 +1,9 @@
 {
-  "overview": "Overview & Server Fundamentals",
-  "node-express": "Node.js & Express",
-  "databases": "Databases",
-  "security": "Authentication, Authorization & Security",
-  "testing-deployment": "Testing & Deployment for Backend"
+  "overview": "🌐 Overview & Server Fundamentals",
+  "runtimes": "⚡ Runtime Environments",
+  "frameworks": "🛠️ Backend Frameworks",
+  "databases": "💾 Databases",
+  "modern-infrastructure": "🌐 Modern Infrastructure",
+  "security": "🔒 Authentication, Authorization & Security",
+  "testing-deployment": "🧪 Testing & Deployment for Backend"
 }

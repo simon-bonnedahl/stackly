@@ -1,0 +1,81 @@
+---
+title: "Kubernetes Introduction"
+description: "A comprehensive guide to Kubernetes and container orchestration fundamentals."
+---
+
+# Kubernetes Introduction
+
+This guide provides an overview of Kubernetes, the industry-standard container orchestration platform for automating deployment, scaling, and management of containerized applications.
+
+## What is Kubernetes?
+
+- **Definition:** An open-source container orchestration platform
+- **Purpose:** Automates containerized application deployment and management
+- **Origin:** Developed by Google, now maintained by CNCF
+
+## Core Concepts
+
+### Kubernetes Architecture
+
+- **Control Plane:** Master node components
+  - API Server
+  - etcd
+  - Scheduler
+  - Controller Manager
+- **Worker Nodes:** Application workload components
+  - kubelet
+  - Container Runtime
+  - kube-proxy
+
+### Basic Objects
+
+- **Pods:** Smallest deployable units
+- **Services:** Network abstraction for pods
+- **Deployments:** Declarative updates for pods
+- **ConfigMaps/Secrets:** Configuration management
+
+## Working with Kubernetes
+
+### Basic Operations
+
+- **Deployment Management**
+  - Creating deployments
+  - Scaling applications
+  - Rolling updates
+  - Rollbacks
+
+### Configuration
+
+- **YAML Manifests**
+- **Resource Definitions**
+- **Labels and Selectors**
+- **Namespaces**
+
+## Advanced Features
+
+### Scaling and High Availability
+
+- **Horizontal Pod Autoscaling**
+- **Cluster Autoscaling**
+- **Load Balancing**
+- **Self-healing**
+
+### Storage and Networking
+
+- **Persistent Volumes**
+- **Storage Classes**
+- **Network Policies**
+- **Service Types**
+
+## Best Practices
+
+- **Resource Management**
+- **Security Configurations**
+- **Monitoring and Logging**
+- **Backup and Disaster Recovery**
+
+## Additional Resources
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/)
+- [Kubernetes Patterns](https://k8spatterns.io/)
+- [CNCF Landscape](https://landscape.cncf.io/)

@@ -1,0 +1,62 @@
+---
+title: "Browser Rendering"
+description: "Understand how browsers render web pages, including the DOM, CSSOM, and the rendering pipeline."
+---
+
+# Browser Rendering
+
+Modern browsers are sophisticated engines that transform HTML, CSS, and JavaScript into interactive web pages. This document provides an overview of the browser rendering process, based on the [Frontend Roadmap](https://roadmap.sh/frontend).
+
+## How Browsers Work
+
+### Parsing HTML and Building the DOM
+
+- **HTML Parsing:**  
+  When a browser loads a web page, it begins by parsing the HTML document.
+- **DOM Tree:**  
+  The HTML is converted into a Document Object Model (DOM), which represents the page structure in a tree-like format.
+
+### Parsing CSS and Building the CSSOM
+
+- **CSS Parsing:**  
+  The browser downloads and parses CSS files.
+- **CSSOM Tree:**  
+  The CSS rules are organized into a CSS Object Model (CSSOM), which is used to apply styles to the DOM elements.
+
+### Constructing the Render Tree
+
+- **Render Tree:**  
+  The browser combines the DOM and CSSOM trees to form the render tree, containing only the nodes required for rendering.
+- **Layout Calculation:**  
+  Using the render tree, the browser computes the layout, determining the size and position of each element.
+
+### Painting and Compositing
+
+- **Painting:**  
+  The browser paints the visual representation of elements onto the screen.
+- **Compositing:**  
+  For complex pages, the browser may split the render tree into layers and composite them, optimizing the rendering process.
+
+## The Critical Rendering Path
+
+- **Definition:**  
+  The critical rendering path is the sequence of steps a browser follows to convert HTML, CSS, and JavaScript into pixels on the screen.
+- **Optimization Strategies:**  
+  - Minimize render-blocking resources such as CSS and JavaScript.
+  - Load non-critical scripts asynchronously.
+  - Optimize images and other media to reduce load time.
+
+## Performance Considerations
+
+- **Reflow and Repaint:**  
+  - **Reflow (Layout):** Occurs when the browser recalculates the layout of the page due to DOM changes.
+  - **Repaint:** Occurs when visual changes (e.g., color changes) are applied without affecting layout.
+- **Minimizing Layout Thrashing:**  
+  Avoid frequent DOM manipulations that trigger reflow and repaint to maintain smooth performance.
+- **Hardware Acceleration:**  
+  Utilize CSS transforms and animations to leverage GPU acceleration for improved rendering performance.
+
+## Additional Resources
+
+- [MDN Web Docs: How Browsers Work](https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work)
+- [Critical Rendering Path - Google Developers](https://developers.google.com/web/fundamentals/performance/critical-rendering-path)

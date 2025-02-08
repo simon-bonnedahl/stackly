@@ -1,13 +1,13 @@
 {
-  "html": "HTML",
-  "css": "CSS",
-  "javascript": "JavaScript",
-  "typescript": "TypeScript",
-  "browser-rendering": "Browser Rendering",
-  "build-tools": "Build Tools",
-  "frameworks": "Frontend Frameworks",
-  "state-management": "State Management",
-  "testing-debugging": "Testing & Debugging",
-  "accessibility": "Accessibility",
-  "ui-ux-design": "UI/UX Design"
+  "html": "📄 HTML",
+  "css": "🎨 CSS",
+  "javascript": "⚡ JavaScript",
+  "typescript": "🔷 TypeScript",
+  "browser-rendering": "🌐 Browser Rendering",
+  "build-tools": "🔧 Build Tools",
+  "frameworks": "⚛️ Frontend Frameworks",
+  "state-management": "📊 State Management",
+  "testing-debugging": "🐛 Testing & Debugging",
+  "accessibility": "♿ Accessibility",
+  "ui-ux-design": "🎯 UI/UX Design"
 }

@@ -1,0 +1,217 @@
+---
+title: "Bun Runtime"
+description: "A comprehensive guide to Bun runtime environment, its performance features, and development tooling."
+---
+
+# Bun Runtime
+
+Bun is a modern JavaScript runtime, bundler, test runner, and package manager all in one. It's designed for speed, offering significant performance improvements over traditional JavaScript runtimes.
+
+## Core Features
+
+### High Performance
+- **JavaScriptCore Engine:** Fast JavaScript execution
+- **Zero-overhead FFI:** Native C/C++ integration
+- **Optimized File I/O:** Fast file system operations
+- **SQLite Integration:** Built-in database support
+
+### Package Management
+```bash
+# Installing packages
+bun install
+
+# Adding dependencies
+bun add express
+
+# Running scripts
+bun run start
+```
+
+### Built-in Bundler
+```javascript
+// bunfig.toml
+[bundle]
+entrypoints = ["./src/index.ts"]
+outdir = "./dist"
+
+// Command line bundling
+bun build ./src/index.ts --outdir ./dist
+```
+
+## Development Features
+
+### Hot Reloading
+```javascript
+// Start development server with hot reloading
+bun --hot run dev.ts
+```
+
+### TypeScript Support
+```typescript
+// TypeScript works out of the box
+interface Config {
+  port: number;
+  env: string;
+}
+
+const config: Config = {
+  port: 3000,
+  env: 'development'
+};
+```
+
+### Testing Framework
+```typescript
+import { expect, test, describe } from "bun:test";
+
+describe("math operations", () => {
+  test("addition", () => {
+    expect(2 + 2).toBe(4);
+  });
+
+  test("async operation", async () => {
+    const result = await Promise.resolve(42);
+    expect(result).toBe(42);
+  });
+});
+```
+
+## Web Server Features
+
+### HTTP Server
+```typescript
+const server = Bun.serve({
+  port: 3000,
+  async fetch(req) {
+    const url = new URL(req.url);
+    
+    if (url.pathname === "/") {
+      return new Response("Welcome to Bun!");
+    }
+    
+    return new Response("404!", { status: 404 });
+  },
+});
+
+console.log(`Listening on http://localhost:${server.port}`);
+```
+
+### WebSocket Support
+```typescript
+const server = Bun.serve({
+  websocket: {
+    open(ws) {
+      console.log("Client connected");
+    },
+    message(ws, message) {
+      ws.send(`Received: ${message}`);
+    },
+    close(ws) {
+      console.log("Client disconnected");
+    },
+  },
+  fetch(req, server) {
+    if (server.upgrade(req)) {
+      return;
+    }
+    return new Response("Upgrade failed", { status: 500 });
+  },
+});
+```
+
+## Database Integration
+
+### SQLite
+```typescript
+const db = new Bun.SQLite(":memory:");
+
+// Create table
+db.run(`
+  CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    email TEXT
+  )
+`);
+
+// Insert data
+db.run(`
+  INSERT INTO users (name, email)
+  VALUES (?, ?)
+`, ["John Doe", "john@example.com"]);
+
+// Query data
+const users = db.query("SELECT * FROM users").all();
+```
+
+## Performance Optimization
+
+### File System Operations
+```typescript
+// Fast file operations
+const file = Bun.file("large-file.txt");
+const text = await file.text();
+const buffer = await file.arrayBuffer();
+
+// Write files
+await Bun.write("output.txt", "Hello, Bun!");
+```
+
+### Memory Management
+```typescript
+// Direct memory access
+const buffer = new ArrayBuffer(1024);
+const view = new DataView(buffer);
+
+// Zero-copy operations
+const file = Bun.file("data.bin");
+const arrayBuffer = await file.arrayBuffer();
+```
+
+## Deployment
+
+### Docker Integration
+```dockerfile
+FROM oven/bun
+
+WORKDIR /app
+
+COPY package.json bun.lockb ./
+RUN bun install --frozen-lockfile
+
+COPY . .
+
+ENV PORT=3000
+EXPOSE 3000
+
+CMD ["bun", "run", "start"]
+```
+
+### Production Best Practices
+1. **Environment Variables**
+```typescript
+const config = {
+  port: parseInt(process.env.PORT || "3000"),
+  nodeEnv: process.env.NODE_ENV || "development",
+  apiKey: process.env.API_KEY
+};
+```
+
+2. **Error Handling**
+```typescript
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+});
+```
+
+## Additional Resources
+
+- [Bun Documentation](https://bun.sh/docs)
+- [Bun API Reference](https://bun.sh/docs/api/http)
+- [Bun GitHub Repository](https://github.com/oven-sh/bun)
+- [Bun Discord Community](https://bun.sh/discord)

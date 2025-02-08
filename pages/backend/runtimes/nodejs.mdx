@@ -1,0 +1,195 @@
+---
+title: "Node.js Runtime"
+description: "A comprehensive guide to Node.js runtime environment, its architecture, and best practices."
+---
+
+# Node.js Runtime
+
+Node.js is a powerful JavaScript runtime built on Chrome's V8 engine that enables server-side execution of JavaScript code. It uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.
+
+## Architecture
+
+### Event Loop
+- **Single-threaded event loop**
+- **Non-blocking I/O operations**
+- **Event-driven programming model**
+- **Asynchronous execution**
+
+### Core Components
+- **V8 Engine:** JavaScript execution engine
+- **libuv:** Handles async operations
+- **Core Modules:** Built-in functionality
+- **npm:** Package management
+
+## Key Features
+
+### Package Management
+```javascript
+// Installing packages
+npm install express
+
+// Package.json example
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+```
+
+### Asynchronous Programming
+```javascript
+// Promises
+async function fetchData() {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Event Emitters
+const EventEmitter = require('events');
+class MyEmitter extends EventEmitter {}
+const myEmitter = new MyEmitter();
+
+myEmitter.on('event', () => {
+  console.log('Event occurred!');
+});
+```
+
+### File System Operations
+```javascript
+const fs = require('fs').promises;
+
+async function readFile() {
+  try {
+    const data = await fs.readFile('file.txt', 'utf8');
+    console.log(data);
+  } catch (error) {
+    console.error('Error reading file:', error);
+  }
+}
+```
+
+## Performance Optimization
+
+### Memory Management
+- **Garbage Collection:** V8's memory management
+- **Memory Leaks:** Common pitfalls and detection
+- **Heap Usage:** Monitoring and optimization
+
+### Best Practices
+1. **Use Clustering:**
+```javascript
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
+
+if (cluster.isMaster) {
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+} else {
+  // Worker process code
+}
+```
+
+2. **Implement Caching:**
+```javascript
+const NodeCache = require('node-cache');
+const myCache = new NodeCache({ stdTTL: 100 });
+
+// Set cache
+myCache.set('key', obj);
+
+// Get cached data
+const value = myCache.get('key');
+```
+
+## Debugging
+
+### Built-in Debugger
+```bash
+node --inspect app.js
+```
+
+### Performance Profiling
+```javascript
+const profiler = require('v8-profiler-next');
+const fs = require('fs');
+
+profiler.startProfiling('CPU Profile');
+setTimeout(() => {
+  const profile = profiler.stopProfiling();
+  profile.export().pipe(fs.createWriteStream('./profile.cpuprofile'));
+}, 30000);
+```
+
+## Security Best Practices
+
+1. **Keep Dependencies Updated**
+```bash
+npm audit
+npm update
+```
+
+2. **Use Security Headers**
+```javascript
+const helmet = require('helmet');
+app.use(helmet());
+```
+
+3. **Input Validation**
+```javascript
+const { body, validationResult } = require('express-validator');
+
+app.post('/user', [
+  body('email').isEmail(),
+  body('password').isLength({ min: 6 })
+], (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+});
+```
+
+## Production Deployment
+
+### Environment Configuration
+```javascript
+require('dotenv').config();
+
+const config = {
+  port: process.env.PORT || 3000,
+  dbUrl: process.env.DATABASE_URL,
+  nodeEnv: process.env.NODE_ENV
+};
+```
+
+### Process Management
+```javascript
+// Using PM2
+// ecosystem.config.js
+module.exports = {
+  apps: [{
+    name: "app",
+    script: "./app.js",
+    instances: "max",
+    exec_mode: "cluster",
+    env: {
+      NODE_ENV: "production"
+    }
+  }]
+};
+```
+
+## Additional Resources
+
+- [Node.js Official Documentation](https://nodejs.org/docs/)
+- [npm Documentation](https://docs.npmjs.com/)
+- [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
+- [V8 Documentation](https://v8.dev/docs)

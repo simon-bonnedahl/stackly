@@ -1,0 +1,73 @@
+---
+title: "Docker Basics"
+description: "A comprehensive guide to Docker containerization and its fundamental concepts."
+---
+
+# Docker Basics
+
+This guide provides an introduction to Docker, containerization, and essential concepts for building and managing containers.
+
+## What is Docker?
+
+- **Definition:** A platform for developing, shipping, and running applications in containers
+- **Containers:** Lightweight, standalone packages containing everything needed to run an application
+- **Benefits:** Consistency, portability, and efficiency
+
+## Core Concepts
+
+### Container Basics
+
+- **Images:** Read-only templates for creating containers
+- **Containers:** Running instances of Docker images
+- **Registry:** Repository for storing and sharing images
+- **Dockerfile:** Instructions for building Docker images
+
+### Docker Architecture
+
+- **Docker Engine:** Core container runtime
+- **Docker Daemon:** Background service managing containers
+- **Docker Client:** Command-line interface
+- **Docker Hub:** Public image registry
+
+## Working with Docker
+
+### Basic Commands
+
+- **Building Images:** `docker build`
+- **Running Containers:** `docker run`
+- **Managing Containers:** `docker ps`, `docker stop`, `docker rm`
+- **Working with Images:** `docker pull`, `docker push`
+
+### Dockerfile
+
+- **Base Images:** Selecting appropriate base images
+- **Instructions:** FROM, RUN, COPY, ENV, EXPOSE
+- **Best Practices:** Layer optimization, multi-stage builds
+- **Security Considerations:** Minimal base images, non-root users
+
+## Docker Compose
+
+### Multi-Container Applications
+
+- **docker-compose.yml:** Defining services
+- **Service Configuration:** Networks, volumes, environment variables
+- **Managing Applications:** Starting, stopping, scaling services
+
+### Networking
+
+- **Container Networks:** Types and use cases
+- **Service Discovery:** Container communication
+- **Port Mapping:** Exposing container ports
+
+## Best Practices
+
+- **Image Optimization:** Reducing image size
+- **Security:** Following security guidelines
+- **Resource Management:** Managing container resources
+- **Monitoring:** Container health and logs
+
+## Additional Resources
+
+- [Docker Documentation](https://docs.docker.com/)
+- [Docker Hub](https://hub.docker.com/)
+- [Docker Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)

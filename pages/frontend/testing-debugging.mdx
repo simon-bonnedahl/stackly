@@ -1,0 +1,56 @@
+---
+title: "Testing & Debugging"
+description: "A guide to testing and debugging frontend applications, covering unit testing, integration testing, and effective debugging techniques."
+---
+
+# Testing & Debugging
+
+Testing and debugging are critical to ensuring your frontend applications are reliable and maintainable. This guide covers key techniques and tools for both.
+
+## Unit Testing
+
+- **Definition:** Testing individual components or functions to verify they work as expected.
+- **Tools:**
+  - **Jest:** A popular JavaScript testing framework.
+  - **Mocha:** A flexible testing framework for Node.js.
+- **Example using Jest:**
+
+~~~javascript
+// sum.js
+export function sum(a, b) {
+  return a + b;
+}
+
+// sum.test.js
+import { sum } from './sum';
+
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
+~~~
+
+## Integration & End-to-End Testing
+
+- **Integration Testing:** Verifies that multiple parts of your application work together.
+  - **React Testing Library:** Helps test React components in a way that mimics user interactions.
+- **End-to-End Testing:** Simulates real user scenarios.
+  - **Cypress:** A powerful tool for writing end-to-end tests.
+
+## Debugging Techniques
+
+- **Browser Developer Tools:** Use Chrome DevTools, Firefox Developer Tools, etc., to inspect elements, debug JavaScript, and analyze performance.
+- **Console Logging:** Utilize `console.log`, `console.error`, etc., to trace code execution.
+- **Source Maps:** Enable source maps to debug transpiled or minified code.
+- **Error Boundaries (in React):** Catch JavaScript errors in components and display fallback UIs.
+
+## Best Practices
+
+- Write tests concurrently with your code.
+- Automate tests in your CI/CD pipeline.
+- Regularly update tests to reflect code changes.
+
+## Additional Resources
+
+- [Jest Documentation](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Cypress Documentation](https://www.cypress.io/)

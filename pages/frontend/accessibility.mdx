@@ -1,0 +1,47 @@
+---
+title: "Accessibility"
+description: "A guide to making web applications accessible to everyone, covering semantic HTML, ARIA, keyboard navigation, and more."
+---
+
+# Accessibility
+
+Accessibility (often abbreviated as a11y) ensures that your web applications are usable by all people, including those with disabilities. This guide outlines best practices and tools to enhance accessibility.
+
+## Why Accessibility Matters
+
+- **Inclusivity:** Make your content available to a broader audience.
+- **Compliance:** Meet legal standards and guidelines.
+- **Improved Usability:** Accessible designs often provide a better overall user experience.
+
+## Best Practices
+
+### Semantic HTML
+
+- Use proper HTML elements (e.g., `<header>`, `<nav>`, `<main>`, `<footer>`) to provide meaningful structure.
+- Prefer native elements like `<button>` and `<a>` for interactive actions.
+
+### ARIA (Accessible Rich Internet Applications)
+
+- Use ARIA roles, states, and properties when native HTML is insufficient.
+- Example: `role="alert"`, `aria-live="polite"`, and `aria-label`.
+
+### Keyboard Navigation
+
+- Ensure all interactive elements are operable via keyboard.
+- Provide clear focus indicators (using CSS) for elements when they are in focus.
+
+### Color Contrast
+
+- Maintain sufficient contrast between text and background.
+- Test your choices with tools like the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/).
+
+## Tools for Testing Accessibility
+
+- **Browser Extensions:** Tools such as Axe, WAVE, or Lighthouse can audit your pages for accessibility issues.
+- **Screen Readers:** Use NVDA, VoiceOver, or JAWS to simulate the experience of users with visual impairments.
+
+## Additional Resources
+
+- [W3C Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/)
+- [MDN Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
+- [WebAIM](https://webaim.org/)

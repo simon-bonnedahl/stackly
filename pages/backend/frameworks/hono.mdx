@@ -1,0 +1,126 @@
+---
+title: "Hono Framework"
+description: "A lightweight, ultrafast web framework for the edge computing era."
+---
+
+# Hono Framework
+
+Hono (炎) is a small, simple, and ultrafast web framework for the edge computing era. It's designed to work in various JavaScript runtimes including Cloudflare Workers, Deno, and Node.js.
+
+## Key Features
+
+### Ultrafast Performance
+- Zero dependencies
+- Minimal overhead
+- Optimized for edge computing
+- TypeScript-first development
+
+### Runtime Compatibility
+- Cloudflare Workers
+- Deno
+- Node.js
+- Bun
+- AWS Lambda
+
+### Built-in Features
+- **Routing:** Path parameters and pattern matching
+- **Middleware:** Composable middleware system
+- **Body Parsing:** JSON, form data, and multipart
+- **Type Safety:** Full TypeScript support
+
+## Core Concepts
+
+### Basic Routing
+```typescript
+import { Hono } from 'hono'
+
+const app = new Hono()
+
+app.get('/', (c) => c.text('Hello Hono!'))
+app.post('/users', (c) => c.json({ message: 'Created' }))
+```
+
+### Middleware
+```typescript
+const auth = async (c, next) => {
+  if (!c.req.header('Authorization')) {
+    return c.text('Unauthorized', 401)
+  }
+  await next()
+}
+
+app.use('/api/*', auth)
+```
+
+### Request Handling
+```typescript
+app.post('/upload', async (c) => {
+  const body = await c.req.parseBody()
+  const file = body['file']
+  return c.json({
+    filename: file.name,
+    size: file.size
+  })
+})
+```
+
+## Best Practices
+
+1. **Project Structure**
+   - Organize routes by feature
+   - Separate middleware logic
+   - Use TypeScript for better type safety
+
+2. **Error Handling**
+   - Implement global error handlers
+   - Use built-in error responses
+   - Create custom error types
+
+3. **Performance**
+   - Leverage edge computing capabilities
+   - Implement proper caching strategies
+   - Optimize response times
+
+4. **Security**
+   - Implement CORS properly
+   - Use security headers
+   - Validate user input
+
+## Getting Started
+
+```bash
+# Using npm
+$ npm install hono
+
+# Using yarn
+$ yarn add hono
+
+# Using pnpm
+$ pnpm add hono
+```
+
+### Basic Example
+```typescript
+import { serve } from '@hono/node-server'
+import { Hono } from 'hono'
+
+const app = new Hono()
+
+app.get('/', (c) => c.text('Hello Hono!'))
+
+serve(app)
+```
+
+## Common Use Cases
+
+- REST API development
+- Edge computing applications
+- Serverless functions
+- Microservices
+- Static file serving
+
+## Additional Resources
+
+- [Official Hono Documentation](https://hono.dev)
+- [Hono GitHub Repository](https://github.com/honojs/hono)
+- [Hono Examples](https://github.com/honojs/examples)

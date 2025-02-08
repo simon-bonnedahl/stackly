@@ -1,0 +1,126 @@
+---
+title: "Express.js Framework"
+description: "A comprehensive guide to building web applications with Express.js"
+---
+
+# Express.js Framework
+
+Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+
+## Core Concepts
+
+### Middleware
+- **Definition:** Functions that have access to the request and response objects
+- **Chain Processing:** Execute in order of definition
+- **Common Use Cases:**
+  - Authentication
+  - Body parsing
+  - CORS handling
+  - Error handling
+  - Logging
+
+### Routing
+```javascript
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
+app.post('/users', (req, res) => {
+  // Create new user
+});
+```
+
+### Request Handling
+- Query parameters
+- Route parameters
+- Request body
+- Headers
+- Cookies
+
+## Database Integration
+
+### MongoDB with Mongoose
+```javascript
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String
+});
+
+const User = mongoose.model('User', userSchema);
+```
+
+### SQL with Sequelize
+```javascript
+const { Sequelize, Model, DataTypes } = require('sequelize');
+const sequelize = new Sequelize('database', 'username', 'password');
+
+class User extends Model {}
+User.init({
+  name: DataTypes.STRING,
+  email: DataTypes.STRING
+}, { sequelize });
+```
+
+## Error Handling
+```javascript
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+```
+
+## Authentication
+
+### JWT Implementation
+```javascript
+const jwt = require('jsonwebtoken');
+
+app.post('/login', (req, res) => {
+  // Verify user credentials
+  const token = jwt.sign({ userId: user.id }, 'secret_key');
+  res.json({ token });
+});
+```
+
+## Best Practices
+
+### Project Structure
+```
+project/
+  ├── controllers/
+  ├── models/
+  ├── routes/
+  ├── middleware/
+  ├── config/
+  └── app.js
+```
+
+### Security Measures
+- Use Helmet.js for security headers
+- Implement rate limiting
+- Validate input data
+- Use CORS properly
+- Set secure cookies
+
+### Performance Optimization
+- Use compression middleware
+- Implement caching
+- Optimize database queries
+- Use async/await properly
+
+## Deployment
+
+### Production Considerations
+- Environment variables
+- Process managers (PM2)
+- Load balancing
+- Monitoring and logging
+- SSL/TLS configuration
+
+## Additional Resources
+
+- [Official Express.js Documentation](https://expressjs.com/)
+- [Express.js Security Best Practices](https://expressjs.com/en/advanced/best-practice-security.html)
+- [Express.js Performance Best Practices](https://expressjs.com/en/advanced/best-practice-performance.html)

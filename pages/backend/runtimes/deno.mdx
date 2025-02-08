@@ -1,0 +1,191 @@
+---
+title: "Deno Runtime"
+description: "A comprehensive guide to Deno runtime environment, its security features, and TypeScript integration."
+---
+
+# Deno Runtime
+
+Deno is a secure runtime for JavaScript and TypeScript, created by Ryan Dahl (the original creator of Node.js). It aims to provide a productive and secure scripting environment for the modern web.
+
+## Core Features
+
+### Built-in TypeScript Support
+```typescript
+// No configuration needed for TypeScript
+interface User {
+  id: number;
+  name: string;
+}
+
+async function getUser(): Promise<User> {
+  const response = await fetch('https://api.example.com/user');
+  return response.json();
+}
+```
+
+### Security First
+- **Explicit Permissions**
+```bash
+# Run with specific permissions
+deno run --allow-net=api.example.com --allow-read=/tmp main.ts
+```
+
+### Standard Library
+```typescript
+// Using built-in modules
+import { serve } from "https://deno.land/std/http/server.ts";
+
+serve((req) => new Response("Hello, World!"), { port: 8000 });
+```
+
+## Modern Features
+
+### URL Imports
+```typescript
+import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+
+const add = (a: number, b: number): number => a + b;
+
+Deno.test("add function", () => {
+  assertEquals(add(2, 3), 5);
+});
+```
+
+### Web Platform APIs
+```typescript
+// Using native fetch
+async function getData() {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  return data;
+}
+
+// WebSocket support
+const ws = new WebSocket('wss://ws.example.com');
+ws.onmessage = (event) => {
+  console.log('Received:', event.data);
+};
+```
+
+## Development Tools
+
+### Built-in Testing
+```typescript
+Deno.test("async test", async () => {
+  const response = await fetch("https://api.example.com");
+  assertEquals(response.status, 200);
+});
+```
+
+### Code Formatting
+```bash
+# Format files
+deno fmt
+
+# Check formatting
+deno fmt --check
+```
+
+### Dependency Inspector
+```bash
+deno info main.ts
+```
+
+## Performance
+
+### V8 Isolates
+```typescript
+// Worker example
+const worker = new Worker(new URL("./worker.ts", import.meta.url).href, {
+  type: "module",
+});
+
+worker.postMessage({ type: "start", data: [1, 2, 3] });
+```
+
+### Resource Management
+```typescript
+// File system operations with permissions
+const file = await Deno.open("example.txt", { write: true, create: true });
+try {
+  await file.write(new TextEncoder().encode("Hello, Deno!"));
+} finally {
+  file.close();
+}
+```
+
+## Package Management
+
+### Import Maps
+```json
+{
+  "imports": {
+    "lodash/": "https://deno.land/x/lodash@4.17.15/",
+    "testing/": "https://deno.land/std/testing/"
+  }
+}
+```
+
+### Dependencies
+```typescript
+// Import third-party modules
+import { pick } from "https://deno.land/x/lodash@4.17.15/pick.js";
+
+const obj = { a: 1, b: 2, c: 3 };
+const picked = pick(obj, ['a', 'c']);
+```
+
+## Deployment
+
+### Compile to Executable
+```bash
+deno compile --allow-net main.ts
+```
+
+### Docker Integration
+```dockerfile
+FROM denoland/deno:latest
+
+WORKDIR /app
+
+COPY . .
+
+RUN deno cache main.ts
+
+CMD ["deno", "run", "--allow-net", "main.ts"]
+```
+
+## Best Practices
+
+1. **Use TypeScript**
+```typescript
+// Leverage type safety
+type Config = {
+  port: number;
+  host: string;
+};
+
+function createServer(config: Config) {
+  // Implementation
+}
+```
+
+2. **Implement Error Handling**
+```typescript
+try {
+  const data = await Deno.readFile("config.json");
+} catch (error) {
+  if (error instanceof Deno.errors.NotFound) {
+    console.error("Config file not found");
+  } else {
+    throw error;
+  }
+}
+```
+
+## Additional Resources
+
+- [Deno Manual](https://deno.land/manual)
+- [Deno Standard Library](https://deno.land/std)
+- [Third-party Modules](https://deno.land/x)
+- [Runtime API Reference](https://doc.deno.land/builtin/stable)

@@ -1,0 +1,95 @@
+---
+title: "Backend Runtime Environments"
+description: "An overview of modern backend runtime environments including Node.js, Deno, and Bun."
+---
+
+# Backend Runtime Environments
+
+Backend runtime environments provide the foundation for executing server-side code. Each runtime has its own characteristics, features, and use cases.
+
+## Popular Runtime Environments
+
+### Node.js
+- **Type:** JavaScript runtime built on Chrome's V8 engine
+- **Release Date:** 2009
+- **Key Features:**
+  - Non-blocking I/O
+  - Large package ecosystem (npm)
+  - Cross-platform compatibility
+  - Active community
+- **Best for:** Web servers, APIs, real-time applications
+
+### Deno
+- **Type:** Modern runtime for JavaScript and TypeScript
+- **Release Date:** 2020
+- **Key Features:**
+  - Built-in TypeScript support
+  - Secure by default
+  - Standard library
+  - URL-based imports
+- **Best for:** Modern TypeScript applications, secure environments
+
+### Bun
+- **Type:** All-in-one JavaScript runtime
+- **Release Date:** 2022
+- **Key Features:**
+  - Extremely fast startup
+  - Built-in bundler and test runner
+  - npm compatibility
+  - WebSocket support
+- **Best for:** High-performance applications, development tooling
+
+## Runtime Comparison
+
+| Feature | Node.js | Deno | Bun |
+|---------|---------|------|------|
+| Engine | V8 | V8 | JavaScriptCore |
+| Package Management | npm/yarn | URL imports | npm + bun install |
+| TypeScript Support | Via transpilation | Built-in | Built-in |
+| Security | Permissive | Secure by default | Permissive |
+| File System Access | Unrestricted | Permission-based | Unrestricted |
+| Build Tools | External | Built-in | Built-in |
+| Test Runner | External | Built-in | Built-in |
+| HTTP Server | External | Built-in | Built-in |
+| WebSocket Support | External | Built-in | Built-in |
+
+## Performance Benchmarks
+
+### HTTP Server Performance
+- **Bun:** ~180,000 req/sec
+- **Node.js:** ~60,000 req/sec
+- **Deno:** ~70,000 req/sec
+
+### Startup Time
+- **Bun:** < 10ms
+- **Node.js:** ~100ms
+- **Deno:** ~50ms
+
+*Note: Benchmarks are approximate and may vary based on hardware and specific use cases.*
+
+## Market Adoption
+
+### Node.js
+- Industry standard with widespread adoption
+- Massive ecosystem with millions of npm packages
+- Used by Netflix, PayPal, LinkedIn, and many others
+
+### Deno
+- Growing adoption in security-conscious environments
+- Popular for edge computing and serverless functions
+- Used by companies focusing on TypeScript-first development
+
+### Bun
+- Rapidly gaining traction for development tooling
+- Adopted for its performance benefits
+- Increasingly popular in performance-critical applications
+
+## Choosing a Runtime
+
+Consider these factors when selecting a runtime environment:
+
+1. **Performance Requirements:** Evaluate the runtime's execution speed and resource usage
+2. **Security Needs:** Consider the security features and defaults
+3. **Ecosystem:** Assess the availability of packages and tools
+4. **Team Experience:** Consider your team's familiarity with the runtime
+5. **Production Requirements:** Evaluate deployment and scaling capabilities

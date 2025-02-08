@@ -1,0 +1,197 @@
+---
+title: "Laravel Framework"
+description: "A comprehensive guide to building web applications with Laravel"
+---
+
+# Laravel Framework
+
+Laravel is a web application framework with expressive, elegant syntax. It provides a robust set of tools and features for modern PHP development.
+
+## Core Concepts
+
+### MVC Architecture
+- **Model:** Database and business logic
+- **View:** Template and presentation
+- **Controller:** Request handling
+
+### Routing
+```php
+use App\Http\Controllers\UserController;
+
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store']);
+Route::get('/users/{id}', [UserController::class, 'show']);
+```
+
+### Controllers
+```php
+namespace App\Http\Controllers;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        $users = User::all();
+        return view('users.index', compact('users'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users'
+        ]);
+
+        $user = User::create($validated);
+        return redirect()->route('users.show', $user);
+    }
+}
+```
+
+## Eloquent ORM
+
+### Model Definition
+```php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    protected $fillable = ['name', 'email'];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+}
+```
+
+### Database Operations
+```php
+// Create
+$user = User::create([
+    'name' => 'John Doe',
+    'email' => 'john@example.com'
+]);
+
+// Read
+$users = User::where('active', true)->get();
+
+// Update
+$user->update(['name' => 'Jane Doe']);
+
+// Delete
+$user->delete();
+```
+
+## Authentication
+
+### Laravel Breeze/Sanctum
+```php
+use Illuminate\Support\Facades\Auth;
+
+public function login(Request $request)
+{
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('dashboard');
+    }
+}
+```
+
+## Middleware
+```php
+namespace App\Http\Middleware;
+
+class CheckRole
+{
+    public function handle($request, Closure $next, $role)
+    {
+        if (!$request->user()->hasRole($role)) {
+            return redirect('home');
+        }
+        return $next($request);
+    }
+}
+```
+
+## Artisan Commands
+```php
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+
+class SendEmails extends Command
+{
+    protected $signature = 'mail:send {user}';
+    protected $description = 'Send emails to a user';
+
+    public function handle()
+    {
+        // Command logic
+    }
+}
+```
+
+## Best Practices
+
+### Project Structure
+```
+project/
+  ├── app/
+  │   ├── Http/
+  │   ├── Models/
+  │   ├── Providers/
+  │   └── Services/
+  ├── config/
+  ├── database/
+  ├── resources/
+  │   ├── views/
+  │   ├── js/
+  │   └── css/
+  ├── routes/
+  └── tests/
+```
+
+### Security Measures
+- CSRF Protection
+- SQL Injection Prevention
+- XSS Protection
+- Authentication
+- Authorization
+
+### Performance Optimization
+- Database Indexing
+- Caching Strategies
+- Queue Workers
+- Eager Loading
+- Asset Compilation
+
+## Deployment
+
+### Production Checklist
+- Environment Configuration
+- Database Migration
+- Cache Configuration
+- Queue Setup
+- SSL Certificate
+
+### Deployment Options
+- Shared Hosting
+- VPS
+- Laravel Forge
+- Platform as a Service
+- Docker Containers
+
+## Additional Resources
+
+- [Laravel Documentation](https://laravel.com/docs)
+- [Laracasts](https://laracasts.com)
+- [Laravel News](https://laravel-news.com)
+- [Laravel Best Practices](https://github.com/alexeymezenin/laravel-best-practices)

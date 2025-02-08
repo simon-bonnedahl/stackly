@@ -1,0 +1,85 @@
+---
+title: "NextAuth.js"
+description: "Guide to implementing authentication using NextAuth.js"
+---
+
+# NextAuth.js Authentication
+
+NextAuth.js is a complete authentication solution for Next.js applications, offering built-in support for various authentication providers.
+
+## Features
+
+- **Built for Next.js**
+  - Seamless integration
+  - API routes support
+  - Middleware support
+  - TypeScript ready
+
+- **OAuth Provider Integration**
+  - Multiple provider support
+  - Social login providers
+  - Custom provider support
+  - Easy configuration
+
+- **Database Session Support**
+  - Multiple database adapters
+  - Secure session handling
+  - JWT session support
+  - Custom session handling
+
+- **Serverless Compatible**
+  - Edge runtime support
+  - Vercel deployment
+  - Netlify deployment
+  - Platform agnostic
+
+## Implementation
+
+### Basic Setup
+```javascript
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
+
+export default NextAuth({
+  providers: [
+    Providers.GitHub({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+    Providers.Google({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+    }),
+  ],
+});
+```
+
+### Protected API Route
+```javascript
+import { getSession } from 'next-auth/react';
+
+export default async function handler(req, res) {
+  const session = await getSession({ req });
+
+  if (session) {
+    // Signed in
+    res.json({ content: 'Protected content' });
+  } else {
+    // Not Signed in
+    res.status(401).json({ error: 'You must be signed in.' });
+  }
+}
+```
+
+## Best Practices
+
+- Use environment variables
+- Implement proper error handling
+- Configure secure callbacks
+- Regular security updates
+
+## Additional Resources
+
+- [NextAuth.js Documentation](https://next-auth.js.org/)
+- [NextAuth.js Examples](https://github.com/nextauthjs/next-auth-example)
+- [NextAuth.js Security](https://next-auth.js.org/security)

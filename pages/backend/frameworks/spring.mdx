@@ -1,0 +1,168 @@
+---
+title: "Spring Framework"
+description: "A comprehensive guide to building enterprise applications with Spring Framework"
+---
+
+# Spring Framework
+
+Spring Framework is a comprehensive programming and configuration model for modern Java-based enterprise applications. It offers a robust ecosystem with Spring Boot, Spring Security, Spring Data, and more.
+
+## Core Concepts
+
+### Dependency Injection
+```java
+@Service
+public class UserService {
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+}
+```
+
+### Spring Boot
+```java
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+## REST Controllers
+
+### Basic Controller
+```java
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    private final UserService userService;
+
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.findAll();
+    }
+
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        return userService.save(user);
+    }
+}
+```
+
+## Data Access
+
+### JPA Repository
+```java
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+
+    // Getters and setters
+}
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
+}
+```
+
+## Security
+
+### Spring Security Configuration
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .antMatchers("/api/public/**").permitAll()
+                .anyRequest().authenticated()
+            .and()
+            .oauth2ResourceServer()
+                .jwt();
+    }
+}
+```
+
+## Testing
+
+### Unit Testing
+```java
+@SpringBootTest
+class UserServiceTest {
+    @MockBean
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
+
+    @Test
+    void whenValidUser_thenUserShouldBeSaved() {
+        // Test implementation
+    }
+}
+```
+
+## Best Practices
+
+### Project Structure
+```
+project/
+  ├── src/
+  │   ├── main/
+  │   │   ├── java/
+  │   │   │   └── com/example/
+  │   │   │       ├── config/
+  │   │   │       ├── controller/
+  │   │   │       ├── model/
+  │   │   │       ├── repository/
+  │   │   │       └── service/
+  │   │   └── resources/
+  │   └── test/
+  └── pom.xml
+```
+
+### Configuration Management
+- Use application.properties/yaml
+- Profile-based configuration
+- Externalized configuration
+- Environment variables
+
+### Performance Optimization
+- Connection pooling
+- Caching with Spring Cache
+- Async processing
+- JPA optimization
+
+## Deployment
+
+### Production Ready Features
+- Actuator endpoints
+- Health checks
+- Metrics collection
+- Distributed tracing
+
+### Deployment Options
+- JAR deployment
+- Docker containers
+- Kubernetes
+- Cloud platforms (AWS, GCP, Azure)
+
+## Additional Resources
+
+- [Spring Framework Documentation](https://docs.spring.io/spring-framework/reference/)
+- [Spring Boot Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/)
+- [Spring Security Reference](https://docs.spring.io/spring-security/reference/)
+- [Spring Data JPA Guide](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)

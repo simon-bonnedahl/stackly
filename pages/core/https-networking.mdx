@@ -1,0 +1,112 @@
+---
+title: "🌍 HTTP/HTTPS"
+description: "An overview of HTTP and HTTPS protocols along with basic networking concepts crucial for web development."
+---
+
+import CustomImage from "../../components/Image"
+
+# HTTP/HTTPS
+
+Understanding networking concepts is essential for building web applications. This guide covers the fundamentals of HTTP and HTTPS, as well as core networking principles that affect how data is transmitted on the web.
+
+## Introduction to Networking
+
+    
+- **Networking Basics:** Networking involves the exchange of data between devices over a network.
+- **Protocols:** Standardized rules define how data is transmitted. HTTP and HTTPS are key protocols on the web.
+
+## HTTP Basics
+
+
+- **Definition:** HTTP (HyperText Transfer Protocol) is the foundation of data communication on the web.
+- **Common Methods:** GET, POST, PUT, DELETE.
+- **Status Codes:** Numeric codes indicating the result of a request (e.g., 200 OK, 404 Not Found).
+
+## HTTPS and Security
+
+
+- **HTTPS:** The secure version of HTTP, which uses SSL/TLS encryption to protect data.
+- **SSL/TLS:** Protocols that secure data communication over the Internet.
+- **Certificates:** Digital certificates verify the authenticity of websites.
+
+## Core Networking Concepts
+
+- **IP Addresses:** Unique identifiers for devices on a network.
+- **DNS:** The Domain Name System translates domain names into IP addresses.
+- **Ports:** Endpoints for network communication that define specific services.
+
+## APIs and RESTful Services
+
+
+- **RESTful APIs:** Utilize HTTP methods to perform operations on resources.
+- **Data Formats:** JSON is commonly used to exchange data between clients and servers.
+
+## API Architectures
+
+### REST (Representational State Transfer)
+- **Definition:** An architectural style that uses HTTP methods to interact with resources.
+- **Characteristics:**
+  - Stateless communication
+  - Uniform interface
+  - Resource-based URLs
+  - Client-server separation
+- **Advantages:**
+  - Simple and widely adopted
+  - Excellent tooling and caching
+  - Easy to understand and implement
+- **Disadvantages:**
+  - Over-fetching/under-fetching data
+  - Multiple round trips for complex data
+  - Rigid endpoints
+
+### GraphQL
+- **Definition:** A query language and runtime for APIs that enables declarative data fetching.
+- **Characteristics:**
+  - Single endpoint
+  - Client-specified queries
+  - Strong typing system
+  - Real-time updates with subscriptions
+- **Advantages:**
+  - Precise data fetching
+  - Reduced network requests
+  - Strong developer tools
+  - Type safety
+- **Disadvantages:**
+  - Learning curve
+  - Complex caching
+  - Server implementation complexity
+
+### tRPC
+- **Definition:** End-to-end typesafe APIs made easy, focusing on TypeScript integration.
+- **Characteristics:**
+  - Full TypeScript integration
+  - Automatic type inference
+  - RPC-style communication
+  - Zero schema redundancy
+- **Advantages:**
+  - Type safety across client and server
+  - Excellent developer experience
+  - Minimal boilerplate
+  - Great performance
+- **Disadvantages:**
+  - Limited to TypeScript ecosystem
+  - Less flexible than REST/GraphQL
+  - Smaller community
+
+### Comparison and Use Cases
+
+| Feature         | REST                            | GraphQL                    | tRPC                   |
+|-----------------|---------------------------------|----------------------------|------------------------|
+| Learning Curve  | Low                             | Medium-High                | Low (with TS)          |
+| Type Safety     | Optional                        | Schema-based               | Full                   |
+| Flexibility     | High                            | Very High                  | Medium                 |
+| Ecosystem       | Very Large                      | Large                      | Growing                |
+| Best For        | Simple APIs, public services    | Complex data requirements, mobile apps | TypeScript monorepos, internal tools |
+
+## Additional Resources
+
+- [MDN Web Docs: HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+- [Understanding HTTPS](https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security)
+- [Networking Fundamentals](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/)
+- [GraphQL Documentation](https://graphql.org/)
+- [tRPC Documentation](https://trpc.io/)

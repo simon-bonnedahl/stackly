@@ -1,0 +1,91 @@
+---
+title: "React"
+description: "Learn about React, a popular JavaScript library for building user interfaces, including components, hooks, state management, and best practices."
+---
+
+# React
+
+React is a popular JavaScript library for building user interfaces. It uses a component-based architecture to create reusable UI components and manage application state effectively. This document, based on the [Frontend Roadmap](https://roadmap.sh/frontend), covers the essential topics of React.
+
+## Core Concepts
+
+### Components
+
+- **Definition:** Components are the building blocks of a React application. They can be either functional or class-based.
+- **JSX:** JSX is a syntax extension that allows you to write HTML-like code within JavaScript.
+- **Props:** Properties passed from parent components to child components.
+- **State:** Internal data that a component manages and can change over time.
+
+### Functional Components and Hooks
+
+- **Functional Components:** Simple components defined as functions.
+- **Hooks:** Functions such as `useState`, `useEffect`, and `useContext` that enable state and side effects in functional components.
+
+Example of a functional component using hooks:
+
+~~~jsx
+import React, { useState, useEffect } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+};
+
+export default Counter;
+~~~
+
+### Class Components
+
+- **Class Components:** Traditional components created using ES6 classes.
+- **Lifecycle Methods:** Methods such as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` manage the component lifecycle.
+
+Example of a class component:
+
+~~~jsx
+import React, { Component } from 'react';
+
+class Greeting extends Component {
+  state = { name: 'World' };
+
+  componentDidMount() {
+    // Perform any side effects here
+  }
+
+  render() {
+    return <h1>Hello, {this.state.name}!</h1>;
+  }
+}
+
+export default Greeting;
+~~~
+
+## State Management
+
+- **Local State:** Managed within a component using hooks (or `this.state` in class components).
+- **Global State:** Managed with libraries like Redux, MobX, or using React's Context API.
+
+## Routing
+
+- **React Router:** A popular library for handling client-side routing in React applications.
+- **Dynamic Routing:** Enables navigation between different views or pages within a React app.
+
+## Testing in React
+
+- **Testing Libraries:** Use Jest and React Testing Library for unit and integration tests of React components.
+- **Snapshot Testing:** Ensure UI consistency through snapshot tests.
+
+## Additional Resources
+
+- [React Official Website](https://reactjs.org/)
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)

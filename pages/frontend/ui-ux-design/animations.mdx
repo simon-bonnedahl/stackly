@@ -1,0 +1,144 @@
+---
+title: "Web Animations"
+description: "A comprehensive guide to creating smooth and performant animations in modern web applications."
+---
+
+# Web Animations
+
+This guide covers various techniques and best practices for implementing animations in web applications, from simple transitions to complex keyframe animations.
+
+## CSS Animations
+
+### Transitions
+- **Basic Transitions:**
+  - Smooth property changes over time
+  - Control duration, timing function, and delay
+  ```css
+  .element {
+    transition: all 0.3s ease-in-out;
+  }
+  ```
+
+### Keyframe Animations
+- **Custom Animations:**
+  ```css
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .animate-fade {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  ```
+
+### Animation Properties
+- **Essential Properties:**
+  - `animation-duration`
+  - `animation-timing-function`
+  - `animation-delay`
+  - `animation-iteration-count`
+  - `animation-direction`
+  - `animation-fill-mode`
+
+## JavaScript Animations
+
+### Web Animations API
+```javascript
+const element = document.querySelector('.element');
+element.animate([
+  { transform: 'translateX(0px)' },
+  { transform: 'translateX(100px)' }
+], {
+  duration: 1000,
+  easing: 'ease-in-out'
+});
+```
+
+### RequestAnimationFrame
+```javascript
+function animate(timestamp) {
+  // Update animation logic
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+```
+
+## Animation Libraries
+
+### Popular Options
+
+- **Framer Motion:**
+  - React-specific animation library
+  - Declarative animations
+  - Gesture support
+  - Layout animations
+
+- **GSAP (GreenSock):**
+  - Professional-grade animations
+  - Cross-browser compatibility
+  - Timeline control
+  - Complex animation sequences
+
+- **Lottie:**
+  - After Effects animations in web
+  - Vector-based animations
+  - Lightweight and performant
+
+## Best Practices
+
+### Performance
+- Prefer `transform` and `opacity` for smooth animations
+- Use `will-change` property sparingly
+- Avoid animating expensive properties (layout/paint)
+- Monitor frame rates and performance metrics
+
+### User Experience
+- Keep animations under 300ms for UI feedback
+- Provide reduced motion options
+- Ensure animations serve a purpose
+- Maintain consistent timing across similar animations
+
+### Accessibility
+- Respect user's motion preferences:
+  ```css
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  ```
+
+## Animation Examples
+
+### Loading Spinners
+```css
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+```
+
+### Hover Effects
+```css
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+```
+
+## Additional Resources
+
+- [MDN Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
+- [CSS Animations Guide](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations)
+- [GSAP Documentation](https://greensock.com/docs/)
+- [Framer Motion](https://www.framer.com/motion/)

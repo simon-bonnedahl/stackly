@@ -1,0 +1,80 @@
+---
+title: "Passport.js"
+description: "Guide to implementing authentication using Passport.js"
+---
+
+# Passport.js Authentication
+
+Passport.js is a flexible authentication middleware for Node.js applications.
+
+## Features
+
+- **Extensive Strategy Ecosystem**
+  - Support for various authentication methods
+  - Easy integration with different providers
+  - Customizable authentication logic
+
+- **Multiple Authentication Methods**
+  - Local authentication
+  - OAuth providers
+  - OpenID Connect
+  - Custom strategies
+
+- **Social Login Integration**
+  - Seamless social media authentication
+  - Popular provider support
+  - Consistent API across providers
+
+- **Session Support**
+  - Built-in session handling
+  - JWT integration
+  - Flexible session storage
+
+## Implementation
+
+### Basic Setup
+```javascript
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (!user.verifyPassword(password)) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
+```
+
+### Social Authentication
+```javascript
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+```
+
+## Best Practices
+
+- Secure session configuration
+- Proper error handling
+- Environment variable usage
+- Rate limiting implementation
+
+## Additional Resources
+
+- [Official Passport.js Documentation](http://www.passportjs.org/)
+- [Passport.js Strategies](http://www.passportjs.org/packages/)
+- [Authentication Patterns](http://www.passportjs.org/concepts/authentication/)

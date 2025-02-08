@@ -1,0 +1,90 @@
+---
+title: "Version Control with Git"
+description: "A comprehensive guide to using Git for version control, including repository management, branching, and collaboration."
+---
+
+import CustomImage from '../../components/Image';
+
+# Version Control with Git
+
+
+Git is a distributed version control system that allows developers to track changes in their code, collaborate with others, and maintain a detailed history of their projects. This guide covers the basics of Git, its core commands, and best practices for effective version control.
+
+## What is Git?
+
+- **Definition:** Git is a tool for tracking changes in source code during software development.
+- **Key Features:** Distributed architecture, branching, merging, and a robust history of changes.
+
+## Basic Git Commands
+
+- **Initialization:**  
+  ~~~bash
+  git init
+  ~~~  
+  Initializes a new Git repository.
+
+- **Cloning:**  
+  ~~~bash
+  git clone [repository URL]
+  ~~~  
+  Clones an existing repository from a remote server.
+
+- **Staging and Committing:**  
+  ~~~bash
+  git add .
+  git commit -m "Commit message"
+  ~~~  
+  Stages changes and commits them to the repository.
+
+- **Viewing Status and History:**  
+  ~~~bash
+  git status
+  git log
+  ~~~
+
+## Branching and Merging
+
+<CustomImage
+  src="https://wac-cdn.atlassian.com/dam/jcr:389059a7-214c-46a3-bc52-7781b4730301/hero.svg"
+  alt="Git Branching Model"
+/>
+
+- **Creating a Branch:**  
+  ~~~bash
+  git branch feature-branch
+  ~~~
+- **Switching Branches:**  
+  ~~~bash
+  git checkout feature-branch
+  ~~~
+- **Merging Branches:**  
+  ~~~bash
+  git merge feature-branch
+  ~~~
+
+## Collaborative Workflows
+
+<CustomImage
+  src="https://wac-cdn.atlassian.com/dam/jcr:b5259cce-6245-49f2-b89b-9871f9ee3fa4/03%20(2).svg"
+  alt="Git Workflow"
+/>
+
+- **Remote Repositories:** Use platforms like GitHub, GitLab, or Bitbucket.
+- **Pull Requests:** Facilitate code reviews and collaboration.
+- **Rebasing:**  
+  ~~~bash
+  git rebase main
+  ~~~  
+  Helps keep a clean commit history.
+
+## Best Practices
+
+- Write clear, descriptive commit messages.
+- Commit small, incremental changes.
+- Regularly synchronize your local repository with remote changes.
+
+## Additional Resources
+
+- [Git Documentation](https://git-scm.com/doc)
+- [Pro Git Book](https://git-scm.com/book/en/v2)
+- [GitHub Guides](https://guides.github.com/)

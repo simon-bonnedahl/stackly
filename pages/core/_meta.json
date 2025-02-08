@@ -1,6 +1,6 @@
 {
-  "command-line": "Command Line & Terminal Basics",
-  "git": "Version Control with Git",
-  "http-networking": "HTTP/HTTPS & Networking Fundamentals",
-  "os-editors": "Operating System & Text Editor Essentials"
+  "command-line": "⌨️ Command Line & Terminal Basics",
+  "git": "🔄 Version Control with Git",
+  "http-networking": "🌍 HTTP/HTTPS",
+  "os-editors": "💻 Operating System & Text Editor Essentials"
 }

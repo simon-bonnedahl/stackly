@@ -1,0 +1,144 @@
+---
+title: "TypeScript"
+description: "An in-depth guide to TypeScript for frontend development, covering basic types, interfaces, classes, and integration with modern frameworks like React."
+---
+
+# TypeScript
+
+TypeScript is a superset of JavaScript that adds static typing, interfaces, and other powerful features to the language. In modern frontend development, TypeScript helps catch errors early, improves code quality, and enhances developer productivity.
+
+## Why Use TypeScript?
+
+- **Static Typing:** Catches errors at compile time, reducing runtime bugs.
+- **Improved Readability:** Self-documenting code makes it easier to understand and maintain.
+- **Enhanced Tooling:** Better autocompletion and refactoring support in IDEs.
+- **Scalability:** Makes managing larger codebases more efficient.
+
+## Basic Types
+
+TypeScript supports basic types like `string`, `number`, `boolean`, and more.
+
+~~~typescript
+let username: string = "Alice";
+let age: number = 30;
+let isActive: boolean = true;
+~~~
+
+## Arrays and Tuples
+
+Define arrays and tuples with specific type annotations.
+
+~~~typescript
+let scores: number[] = [90, 80, 70];
+let user: [string, number] = ["Bob", 25];
+~~~
+
+## Interfaces and Type Aliases
+
+Define object shapes using interfaces or type aliases.
+
+~~~typescript
+interface User {
+  name: string;
+  age: number;
+  isAdmin?: boolean; // optional property
+}
+
+const user: User = {
+  name: "Charlie",
+  age: 28,
+};
+~~~
+
+Alternatively, using type aliases:
+
+~~~typescript
+type UserType = {
+  name: string;
+  age: number;
+  isAdmin?: boolean;
+};
+
+const anotherUser: UserType = {
+  name: "Diana",
+  age: 32,
+  isAdmin: true,
+};
+~~~
+
+## Functions
+
+Specify parameter and return types for functions.
+
+~~~typescript
+function add(a: number, b: number): number {
+  return a + b;
+}
+~~~
+
+## Classes
+
+Leverage object-oriented programming with classes in TypeScript.
+
+~~~typescript
+class Person {
+  name: string;
+  age: number;
+  
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet(): string {
+    return `Hello, my name is ${this.name}`;
+  }
+}
+
+const person = new Person("Eva", 29);
+~~~
+
+## Generics
+
+Create reusable components using generics.
+
+~~~typescript
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+let output = identity<string>("Hello");
+~~~
+
+## Integration with React
+
+TypeScript is widely used with React for robust, type-safe components. Here’s an example of a functional component with typed props:
+
+~~~tsx
+import React from 'react';
+
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ label, onClick }) => (
+  <button onClick={onClick}>{label}</button>
+);
+
+export default Button;
+~~~
+
+## Advanced Topics
+
+- **Enums:** Define a set of named constants.
+- **Union and Intersection Types:** Combine types for more flexible definitions.
+- **Type Inference:** Allow TypeScript to automatically determine types.
+- **Type Guards:** Use conditional checks to narrow down types.
+- **Declaration Merging:** Extend existing types and interfaces.
+
+## Additional Resources
+
+- [TypeScript Official Website](https://www.typescriptlang.org/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [DefinitelyTyped Repository](https://github.com/DefinitelyTyped/DefinitelyTyped)

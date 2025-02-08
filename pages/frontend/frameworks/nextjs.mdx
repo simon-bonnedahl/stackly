@@ -1,0 +1,92 @@
+---
+title: "Next.js"
+description: "A detailed guide to Next.js, a popular React framework for server-side rendering and static site generation."
+---
+
+# Next.js
+
+Next.js is a powerful React framework that simplifies building modern web applications. It offers features such as server-side rendering (SSR), static site generation (SSG), file-based routing, and API routes out of the box.
+
+## Core Concepts
+
+### File-Based Routing
+
+Next.js uses a file-based routing system. Every file inside the `pages` directory automatically becomes a route.
+
+~~~jsx
+// pages/index.js
+export default function Home() {
+  return <h1>Welcome to Next.js!</h1>;
+}
+~~~
+
+### Server-Side Rendering (SSR)
+
+Server-side rendering generates HTML on the server for each request, which can improve SEO and initial load performance.
+
+~~~jsx
+// pages/ssr-example.js
+export async function getServerSideProps(context) {
+  const res = await fetch('https://api.example.com/data');
+  const data = await res.json();
+  return { props: { data } };
+}
+
+export default function SSRPage({ data }) {
+  return <div>Data: {JSON.stringify(data)}</div>;
+}
+~~~
+
+### Static Site Generation (SSG)
+
+Static site generation pre-renders pages at build time, making it ideal for pages that do not change frequently.
+
+~~~jsx
+// pages/ssg-example.js
+export async function getStaticProps() {
+  const res = await fetch('https://api.example.com/data');
+  const data = await res.json();
+  return { props: { data } };
+}
+
+export default function SSGPage({ data }) {
+  return <div>Data: {JSON.stringify(data)}</div>;
+}
+~~~
+
+### API Routes
+
+Next.js lets you build backend functionality directly within your application using API routes. Files inside the `pages/api` directory become serverless functions.
+
+~~~jsx
+// pages/api/hello.js
+export default function handler(req, res) {
+  res.status(200).json({ message: 'Hello from Next.js API!' });
+}
+~~~
+
+### Styling and CSS Support
+
+Next.js supports CSS and Sass out of the box. You can import CSS files or use CSS modules for component-level styling.
+
+~~~jsx
+// pages/index.js
+import styles from '../styles/Home.module.css';
+
+export default function Home() {
+  return <div className={styles.container}>Welcome to Next.js!</div>;
+}
+~~~
+
+## Additional Features
+
+- **Image Optimization:** Automatically optimize images with the Next.js `Image` component.
+- **Fast Refresh:** Provides instant feedback during development.
+- **Internationalization (i18n):** Built-in support for multiple languages.
+- **Performance Optimization:** Automatic code splitting and prefetching improve application performance.
+
+## Additional Resources
+
+- [Next.js Official Website](https://nextjs.org)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn)

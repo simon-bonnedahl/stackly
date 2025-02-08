@@ -1,0 +1,162 @@
+---
+title: "Django Framework"
+description: "A comprehensive guide to building web applications with Django"
+---
+
+# Django Framework
+
+Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It follows the "batteries included" philosophy and comes with many built-in features.
+
+## Core Concepts
+
+### MVT Architecture
+- **Model:** Database structure and business logic
+- **View:** Request handling and business logic
+- **Template:** Presentation layer
+
+### URL Routing
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('users/', views.user_list, name='user-list'),
+    path('users/<int:pk>/', views.user_detail, name='user-detail'),
+]
+```
+
+### Views
+```python
+from django.shortcuts import render
+from .models import User
+
+def user_list(request):
+    users = User.objects.all()
+    return render(request, 'users/list.html', {'users': users})
+```
+
+## Models and ORM
+
+### Model Definition
+```python
+from django.db import models
+
+class User(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+```
+
+### QuerySet Operations
+```python
+# Create
+user = User.objects.create(name='John', email='john@example.com')
+
+# Read
+users = User.objects.filter(name__startswith='J')
+
+# Update
+User.objects.filter(id=1).update(name='Jane')
+
+# Delete
+User.objects.filter(id=1).delete()
+```
+
+## Forms and Validation
+
+### Form Definition
+```python
+from django import forms
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['name', 'email']
+```
+
+## Admin Interface
+```python
+from django.contrib import admin
+from .models import User
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'created_at']
+    search_fields = ['name', 'email']
+    list_filter = ['created_at']
+```
+
+## Authentication and Authorization
+
+### User Authentication
+```python
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
+```
+
+### Permissions
+```python
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
+class UserUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'app.change_user'
+    model = User
+    template_name = 'users/update.html'
+```
+
+## Best Practices
+
+### Project Structure
+```
+project/
+  ├── manage.py
+  ├── project/
+  │   ├── settings.py
+  │   ├── urls.py
+  │   └── wsgi.py
+  └── app/
+      ├── models.py
+      ├── views.py
+      ├── urls.py
+      └── templates/
+```
+
+### Security Measures
+- Keep `SECRET_KEY` secure
+- Use HTTPS
+- Implement CSRF protection
+- Validate user input
+- Use secure password hashing
+
+### Performance Optimization
+- Database optimization
+- Caching strategies
+- Query optimization
+- Static file handling
+
+## Deployment
+
+### Production Settings
+- Debug mode off
+- Secure settings configuration
+- Static files serving
+- Database configuration
+- Logging setup
+
+### Deployment Options
+- Gunicorn + Nginx
+- Docker containers
+- Platform as a Service (PaaS)
+- Cloud providers
+
+## Additional Resources
+
+- [Official Django Documentation](https://docs.djangoproject.com/)
+- [Django REST Framework](https://www.django-rest-framework.org/)
+- [Django Security Best Practices](https://docs.djangoproject.com/en/stable/topics/security/)

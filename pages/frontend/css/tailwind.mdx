@@ -1,0 +1,168 @@
+---
+title: "🌊 Tailwind CSS"
+description: "A comprehensive guide to using Tailwind CSS utility-first framework."
+---
+
+# Tailwind CSS
+
+Tailwind CSS is a utility-first CSS framework that enables rapid UI development through composable utility classes. Unlike traditional frameworks, Tailwind provides low-level utility classes that can be combined to build any design.
+
+## Core Concepts
+
+### Utility-First Approach
+- **Definition:** Build designs by combining small, single-purpose utility classes
+- **Benefits:**
+  - No need to write custom CSS
+  - Consistent design system
+  - Reduced CSS bundle size through PurgeCSS
+  - Improved maintainability
+
+### Installation & Setup
+```bash
+npm install tailwindcss
+npx tailwindcss init
+```
+
+### Configuration
+```javascript
+// tailwind.config.js
+module::exports = {
+  content: [
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}'
+  ],
+  theme: {
+    extend: {
+      // Custom configurations
+    }
+  },
+  plugins: []
+}
+```
+
+## Key Features
+
+### Responsive Design
+```html
+<div class="w-full md:w-1/2 lg:w-1/3">
+  <!-- Responsive width: 100% on mobile, 50% on tablet, 33% on desktop -->
+</div>
+```
+
+### Component Patterns
+```html
+<!-- Button Component -->
+<button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+  Click me
+</button>
+
+<!-- Card Component -->
+<div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+  <h2 class="text-xl font-bold mb-2">Card Title</h2>
+  <p class="text-gray-600">Card content goes here</p>
+</div>
+```
+
+### Dark Mode
+```html
+<div class="bg-white dark:bg-gray-800 text-black dark:text-white">
+  <!-- Content adapts to light/dark mode -->
+</div>
+```
+
+## Best Practices
+
+### Organization
+1. **Extract Components**
+   - Use @apply for repeated patterns
+   - Create reusable component classes
+
+```css
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600;
+  }
+}
+```
+
+2. **Custom Utilities**
+```css
+@layer utilities {
+  .scroll-snap-none {
+    scroll-snap-type: none;
+  }
+}
+```
+
+### Performance Optimization
+- Use JIT (Just-In-Time) mode
+- Configure content paths correctly
+- Minimize unused styles
+- Leverage code splitting
+
+## Common Patterns
+
+### Layout
+```html
+<!-- Flex Container -->
+<div class="flex items-center justify-between p-4">
+  <div>Left</div>
+  <div>Right</div>
+</div>
+
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</div>
+```
+
+### Typography
+```html
+<h1 class="text-4xl font-bold tracking-tight text-gray-900">
+  Large Title
+</h1>
+<p class="mt-2 text-lg leading-8 text-gray-600">
+  Descriptive text with good readability
+</p>
+```
+
+### Interactive Elements
+```html
+<!-- Hover and Focus States -->
+<input 
+  class="border rounded px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+  type="text"
+  placeholder="Enter text"
+/>
+```
+
+## Integration with Frameworks
+
+### React Integration
+```jsx
+function Button({ children }) {
+  return (
+    <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+      {children}
+    </button>
+  );
+}
+```
+
+### Vue Integration
+```vue
+<template>
+  <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+    <slot></slot>
+  </button>
+</template>
+```
+
+## Resources
+
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Tailwind UI Components](https://tailwindui.com/)
+- [Tailwind Play](https://play.tailwindcss.com/)
+- [Headless UI](https://headlessui.dev/)

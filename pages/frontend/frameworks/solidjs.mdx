@@ -1,0 +1,88 @@
+---
+title: "SolidJS"
+description: "A detailed guide to SolidJS, a reactive JavaScript library for building user interfaces with fine-grained reactivity."
+---
+
+# SolidJS
+
+SolidJS is a declarative JavaScript library for building user interfaces. It leverages fine-grained reactivity to update the DOM efficiently without using a virtual DOM. SolidJS is designed to be fast and simple, offering a developer experience similar to React but with improved performance through its reactive system.
+
+## Core Concepts
+
+### Fine-Grained Reactivity
+
+- **Reactivity:** SolidJS uses a reactive system where computations automatically update when their dependencies change. Unlike some frameworks that rely on a virtual DOM, SolidJS updates only the affected parts of the DOM.
+- **Signals:** The primary reactive primitive in SolidJS is a signal. Signals are functions that store values and notify dependent computations when they change.
+
+~~~jsx
+import { createSignal } from "solid-js";
+
+function Counter() {
+  const [count, setCount] = createSignal(0);
+  return (
+    <div>
+      <p>Count: {count()}</p>
+      <button onClick={() => setCount(count() + 1)}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+~~~
+
+### JSX and Components
+
+- **JSX:** SolidJS uses JSX for templating. Components are simple functions that return JSX.
+- **Components:** Create reusable UI components with a functional approach.
+
+~~~jsx
+import { createSignal } from "solid-js";
+
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+export default Greeting;
+~~~
+
+### Stores and State Management
+
+- **Stores:** SolidJS provides simple reactive stores for managing state in more complex applications.
+- **Reactivity in Stores:** When a store's property changes, components using that store automatically update.
+
+~~~jsx
+import { createStore } from "solid-js/store";
+
+function TodoApp() {
+  const [todos, setTodos] = createStore([{ text: "Learn SolidJS", done: false }]);
+
+  function addTodo(text) {
+    setTodos([...todos, { text, done: false }]);
+  }
+
+  return (
+    <div>
+      <ul>
+        {todos.map(todo => (
+          <li>{todo.text}</li>
+        ))}
+      </ul>
+      <button onClick={() => addTodo("New Task")}>Add Todo</button>
+    </div>
+  );
+}
+
+export default TodoApp;
+~~~
+
+## Tooling and Ecosystem
+
+- **Solid Start:** The official framework for building SolidJS applications with routing, SSR, and more.
+- **Bundlers and Tooling:** SolidJS integrates well with popular bundlers like Vite for fast development experiences.
+- **Community:** A growing community with an increasing number of plugins, libraries, and learning resources.
+
+## Additional Resources
+
+- [SolidJS Official Website](https://www.solidjs.com)
+- [SolidJS Documentation](https://www.solidjs.com/docs)
+- [SolidJS GitHub Repository](https://github.com/solidjs/solid)
