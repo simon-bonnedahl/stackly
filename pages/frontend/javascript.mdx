@@ -1,0 +1,135 @@
+---
+title: "JavaScript"
+description: "Master the core concepts of JavaScript, including ES6+ features, asynchronous programming, and modern best practices."
+---
+
+# JavaScript Fundamentals
+
+JavaScript is a core language of the web, enabling interactive and dynamic functionality on websites. This document covers essential topics to master JavaScript for modern web development.
+
+## What is JavaScript?
+
+- **Definition:** JavaScript is a high-level, interpreted programming language and a key technology of the web, alongside HTML and CSS.
+- **Role in Web Development:** It enables dynamic behavior, manipulation of the DOM, and communication with servers through APIs.
+
+## Core Concepts
+
+### Variables and Data Types
+
+- **Variables:** Declared using `var`, `let`, or `const`.
+- **Data Types:**  
+  - **Primitive Types:** `string`, `number`, `boolean`, `null`, `undefined`, `symbol`
+  - **Complex Types:** `object`, `array`
+
+### Operators and Expressions
+
+- **Arithmetic Operators:** `+`, `-`, `*`, `/`, `%`
+- **Comparison Operators:** `==`, `===`, `!=`, `!==`, `<`, `>`, `<=`, `>=`
+- **Logical Operators:** `&&`, `||`, `!`
+- **Template Literals:** Use backticks for string interpolation.
+
+### Functions
+
+- **Function Declaration vs. Expression:**  
+  ~~~javascript
+  // Function Declaration
+  function greet(name) {
+    return `Hello, ${name}!`;
+  }
+  
+  // Function Expression
+  const greet = function(name) {
+    return `Hello, ${name}!`;
+  };
+  ~~~
+- **Arrow Functions:**  
+  ~~~javascript
+  const greet = (name) => `Hello, ${name}!`;
+  ~~~
+
+### Control Structures
+
+- **Conditionals:** Use `if`, `else if`, `else`, and `switch` statements.
+- **Loops:** Use `for`, `while`, `do...while` loops, and array methods like `.forEach()`, `.map()`, `.filter()`, and `.reduce()`.
+
+### Objects and Arrays
+
+- **Objects:** Create objects with key-value pairs and methods.  
+  ~~~javascript
+  const person = {
+    name: 'Alice',
+    age: 30,
+    greet() {
+      return `Hello, my name is ${this.name}`;
+    }
+  };
+  ~~~
+- **Arrays:** Work with arrays using methods like `.push()`, `.pop()`, `.shift()`, `.unshift()`, and iteration methods.
+  
+  ~~~javascript
+  const numbers = [1, 2, 3, 4, 5];
+  const doubled = numbers.map(n => n * 2);
+  ~~~
+
+## ES6+ Features
+
+- **Destructuring:** Extract values from arrays or objects.
+  
+  ~~~javascript
+  const [first, second] = [10, 20];
+  const { name, age } = { name: 'Bob', age: 25 };
+  ~~~
+- **Spread and Rest Operators:**  
+  ~~~javascript
+  const nums = [1, 2, 3];
+  const newNums = [...nums, 4, 5]; // Spread operator
+  
+  const [first, ...rest] = newNums; // Rest operator
+  ~~~
+- **Modules:** Import and export modules.
+  
+  ~~~javascript
+  // Export
+  export const sum = (a, b) => a + b;
+  
+  // Import
+  import { sum } from './math';
+  ~~~
+
+## Asynchronous JavaScript
+
+- **Callbacks:** Functions passed as arguments to execute later.
+- **Promises:**  
+  ~~~javascript
+  const promise = new Promise((resolve, reject) => {
+    // asynchronous operation
+  });
+  ~~~
+- **Async/Await:**  
+  ~~~javascript
+  async function fetchData() {
+    try {
+      const response = await fetch('https://api.example.com/data');
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+  ~~~
+
+## Modern Best Practices
+
+- **Use Strict Mode:**  
+  ~~~javascript
+  'use strict';
+  ~~~
+- **Modular Code:** Organize code into reusable modules.
+- **Tooling:** Utilize linters (ESLint) and formatters (Prettier) to maintain code quality.
+- **Testing:** Implement unit tests using frameworks like Jest.
+
+## Additional Resources
+
+- [MDN Web Docs: JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [JavaScript Info](https://javascript.info/)
+- [ECMAScript 6 Features](https://www.ecma-international.org/ecma-262/6.0/)

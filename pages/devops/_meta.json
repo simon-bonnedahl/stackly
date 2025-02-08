@@ -1,0 +1,8 @@
+{
+    "overview": "DevOps Overview",
+    "docker": "Docker Basics",
+    "kubernetes": "Kubernetes Introduction",
+    "cloud-ci-cd": "Cloud Providers & CI/CD Tools",
+    "monitoring": "Monitoring & Logging"
+  }
+  

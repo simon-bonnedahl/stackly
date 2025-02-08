@@ -1,7 +1,7 @@
 {
   "name": "stackly",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "Stackly - Fullstack developer learning platform",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/simon-bonnedahl/stackly.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "Simon Bonnedahl",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/simon-bonnedahl/stackly/issues"

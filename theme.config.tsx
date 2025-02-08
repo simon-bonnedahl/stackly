@@ -7,6 +7,11 @@ const config: DocsThemeConfig = {
       <link rel="icon" type="image/x-icon" href="/favicon.svg"/>
     </>
   ),
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – Stackly'
+    }
+  },
   logo: (
     <>
       <img width="24" height="24" src="/favicon.svg"></img>

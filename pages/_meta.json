@@ -1,5 +1,8 @@
 {
   "index": "Introduction",
+  "core": "Core Fundamentals",
   "frontend": "Frontend",
-  "backend": "Backend"
+  "backend": "Backend",
+  "devops": "DevOps & Deployment",
+  "resources": "Additional Resources"
 }

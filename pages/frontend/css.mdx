@@ -1,0 +1,103 @@
+---
+title: "CSS"
+description: "Learn the basics of CSS including selectors, styling, layout, responsive design, and advanced concepts."
+---
+
+# CSS Fundamentals
+
+CSS (Cascading Style Sheets) is the language used to style and layout web pages. It allows you to apply styles to HTML elements, control layouts, and create visually engaging designs. This document covers the essential topics you need to master CSS.
+
+## What is CSS?
+
+- **Definition:** CSS is a stylesheet language used to describe the presentation of a document written in HTML.
+- **Role in Web Development:** It separates content (HTML) from design (CSS), allowing for flexible and maintainable code.
+- **Cascading & Specificity:** CSS rules cascade, meaning that rules can override each other based on specificity and source order.
+
+## Basic Syntax and Selectors
+
+- **Syntax Overview:**  
+  A CSS rule consists of a selector and a declaration block.
+  
+  ~~~css
+  selector {
+    property: value;
+    /* additional properties */
+  }
+  ~~~
+
+- **Selectors:**  
+  - **Element Selectors:** Target elements by their tag name (e.g., `p`, `h1`).
+  - **Class Selectors:** Use a period (`.`) before a class name (e.g., `.container`).
+  - **ID Selectors:** Use a hash (`#`) before an ID (e.g., `#header`).
+  - **Attribute Selectors:** Target elements based on attributes (e.g., `[type="text"]`).
+  - **Pseudo-classes and Pseudo-elements:** Style elements based on their state or structure (e.g., `:hover`, `::before`).
+
+## The Box Model
+
+- **Understanding the Box Model:**  
+  Every element is considered a box with the following properties:
+  - **Content:** The actual content of the element.
+  - **Padding:** Space around the content.
+  - **Border:** A border surrounding the padding.
+  - **Margin:** Space outside the border.
+  
+- **Box Sizing:**  
+  Control how the total width and height are calculated using:
+  
+  ~~~css
+  * {
+    box-sizing: border-box;
+  }
+  ~~~
+
+## Layout Techniques
+
+- **Flexbox:**  
+  Provides a flexible way to arrange items in a container.
+  - Apply `display: flex;` on a container.
+  - Use properties like `justify-content`, `align-items`, and `flex-direction` to control layout.
+
+- **Grid Layout:**  
+  Enables the creation of complex, responsive grid-based layouts.
+  - Apply `display: grid;` on a container.
+  - Use properties like `grid-template-columns`, `grid-template-rows`, and `gap` to define the grid.
+
+- **Positioning:**  
+  Understand the different positioning methods:
+  - `static`, `relative`, `absolute`, `fixed`, and `sticky`.
+
+## Responsive Design
+
+- **Media Queries:**  
+  Apply styles based on device characteristics.
+  
+  ~~~css
+  @media (max-width: 768px) {
+    /* CSS rules for screens smaller than 768px */
+  }
+  ~~~
+
+- **Fluid Layouts:**  
+  Use relative units like percentages and `em`/`rem` for scalable designs.
+
+- **Mobile-First Approach:**  
+  Design your styles for mobile devices first, then scale up for larger screens.
+
+## Advanced CSS Concepts
+
+- **Preprocessors:**  
+  Tools like Sass or Less extend CSS with variables, nesting, and mixins.
+  
+- **Animations and Transitions:**  
+  Create dynamic effects with CSS transitions and keyframe animations.
+  
+- **CSS Variables:**  
+  Define reusable values using custom properties (e.g., `--main-color`).
+
+## Additional Resources
+
+- [MDN Web Docs: CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [CSS-Tricks](https://css-tricks.com/)
+- [W3C CSS Specifications](https://www.w3.org/Style/CSS/)
+
+Happy styling!

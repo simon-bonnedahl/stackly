@@ -1,4 +1,7 @@
 {
-  "frameworks": "Frameworks"
-  
+  "overview": "Overview & Server Fundamentals",
+  "node-express": "Node.js & Express",
+  "databases": "Databases",
+  "security": "Authentication, Authorization & Security",
+  "testing-deployment": "Testing & Deployment for Backend"
 }
