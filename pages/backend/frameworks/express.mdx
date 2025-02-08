@@ -1,15 +1,15 @@
 ---
-title: "Express.js Framework"
+title: "Express.js"
 description: "A comprehensive guide to building web applications with Express.js"
 ---
 
-# Express.js Framework
+# Express.js
 
 Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 
 ## Core Concepts
 
-### Middleware
+### Middleware 🛠️
 - **Definition:** Functions that have access to the request and response objects
 - **Chain Processing:** Execute in order of definition
 - **Common Use Cases:**
@@ -19,7 +19,7 @@ Express.js is a minimal and flexible Node.js web application framework that prov
   - Error handling
   - Logging
 
-### Routing
+### Routing 🗺️
 ```javascript
 app.get('/users', (req, res) => {
   res.json(users);
@@ -30,14 +30,14 @@ app.post('/users', (req, res) => {
 });
 ```
 
-### Request Handling
+### Request Handling 📦
 - Query parameters
 - Route parameters
 - Request body
 - Headers
 - Cookies
 
-## Database Integration
+## Database Integration 🗄️
 
 ### MongoDB with Mongoose
 ```javascript
@@ -63,7 +63,7 @@ User.init({
 }, { sequelize });
 ```
 
-## Error Handling
+## Error Handling ⚠️
 ```javascript
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -71,7 +71,7 @@ app.use((err, req, res, next) => {
 });
 ```
 
-## Authentication
+## Authentication 🔐
 
 ### JWT Implementation
 ```javascript

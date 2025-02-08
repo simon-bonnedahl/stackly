@@ -1,6 +1,6 @@
 {
   "name": "stackly",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Stackly - Fullstack developer learning platform",
   "scripts": {
     "dev": "next dev",
