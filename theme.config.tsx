@@ -11,7 +11,7 @@ const config: DocsThemeConfig = {
   useNextSeoProps() {
     const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
     return {
-      titleTemplate: '%s – Stackly',
+      titleTemplate: 'Stackly | %s',
       canonical: `https://stackly.simbo.dev${currentPath}`,
       description: 'A comprehensive guide to fullstack web development, covering frontend, backend, DevOps, and best practices.',
       openGraph: {
