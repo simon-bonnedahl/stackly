@@ -1,6 +1,5 @@
 {
-  "index": "🔍 Overview",
-  "nodejs": "💚 Node.js",
-  "deno": "🦕 Deno",
-  "bun": "🐰 Bun"
+  "nodejs": "Node.js",
+  "deno": "Deno",
+  "bun": "Bun"
 }

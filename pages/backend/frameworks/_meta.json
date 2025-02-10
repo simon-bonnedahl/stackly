@@ -1,9 +1,8 @@
 {
-  "index": "🔍 Overview",
-  "express": "⚡ Express.js",
-  "nestjs": "🏗️ NestJS",
-  "hono": "🚅 Hono",
-  "django": "🐍 Django",
-  "spring": "🌱 Spring",
-  "laravel": "🎭 Laravel"
+  "express": "Express.js",
+  "nestjs": "NestJS",
+  "hono": "Hono",
+  "django": "Django",
+  "spring": "Spring",
+  "laravel": "Laravel"
 }

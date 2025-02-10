@@ -4,6 +4,6 @@
   "frameworks": "🛠️ Backend Frameworks",
   "databases": "💾 Databases",
   "modern-infrastructure": "🌐 Modern Infrastructure",
-  "security": "🔒 Authentication, Authorization & Security",
-  "testing-deployment": "🧪 Testing & Deployment for Backend"
+  "auth": "🔒 Auth",
+  "testing-deployment": "🧪 Testing & Deployment"
 }

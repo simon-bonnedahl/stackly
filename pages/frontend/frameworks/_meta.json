@@ -1,9 +1,8 @@
 {
-  "index": "🔍 Overview",
-  "react": "⚛️ React",
-  "angular": "🅰️ Angular",
-  "vue": "💚 Vue",
-  "svelte": "🔥 Svelte",
-  "nextjs": "▲ Next.js",
-  "solidjs": "💎 SolidJS"
+  "react": "React",
+  "angular": "Angular",
+  "vue": "Vue",
+  "svelte": "Svelte",
+  "nextjs": "Next.js",
+  "solidjs": "SolidJS"
 }
