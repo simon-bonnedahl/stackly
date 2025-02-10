@@ -1,6 +1,8 @@
 {
   "command-line": "⌨️ Command Line & Terminal Basics",
-  "git": "🔄 Version Control with Git",
-  "http-networking": "🌍 HTTP/HTTPS",
-  "os-editors": "💻 Operating System & Text Editor Essentials"
+  "os-editors": "💻 OS & Editors",
+  "git": "🐙 Git",
+  "http-https": "🌍 HTTP/HTTPS",
+  "webhooks": "🔗 Webhooks",
+  "websockets": "📡 WebSockets"
 }
