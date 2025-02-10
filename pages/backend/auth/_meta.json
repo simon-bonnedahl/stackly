@@ -2,6 +2,6 @@
   "clerk": "Clerk",
   "passport": "Passport.js",
   "auth0": "Auth0",
-  "firebase": "Firebase Authentication",
+  "firebase": "Firebase Auth",
   "nextauth": "NextAuth.js"
 }
